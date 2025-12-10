@@ -1,14 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" th:href"@{/css/main.css}">
 </head>
 <body>
 <div>
-    <a href="/index"><button>Retour acceuil</button></a>
+        <h3>My id is: <span th:text="${article.id}"></span></h3>
+        <h5>My title is: <span th:text="${article.title}"></span></h5>
+        <h5>My author is: <span th:text="${article.author}"></span></h5>
+        <h5>Resum: <span th:text="${article.contenu}"></span></h5>
+    <br>
+    <br>
+    <a href="/"><button>Retour acceuil</button></a>
     <a th:href="@{/{id}/supprimer(id=${article.id})}"><button>Delete</button></a>
-    <a th:href="@{/{id}/modifier(id=${article.id])}}"><button>Modifier</button></a>
+    <a href="/form"><button>Modifier</button></a>
 </div>
 
 </body>

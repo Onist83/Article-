@@ -24,7 +24,7 @@ public class ArticleController {
 //        return articleService.getListArticles();
 //    }
 
-    @GetMapping("/nouveau") //createANewArticle
+    @GetMapping("/form") //createANewArticle
     public String getcreateANewArticle(Model model) {
         model.addAttribute("article", new Article());
         return "form";
@@ -35,15 +35,25 @@ public class ArticleController {
 //        articleService.createANewArticle(article);&a
 //    }
 
-    @PostMapping("add-article")
-    public String addArticle(@ModelAttribute Article a, Model model) {
-        articleService.addArticle(a);
-        return "index";
+    @GetMapping("/detail/{id}")
+    public String getDetailArticle(Model model, @PathVariable Long id) throws IllegalAccessException {
+        model.addAttribute("article", articleService.getArticleById(id));
+        return "detail";
     }
-//            @RequestBody Article article
-//    ) {
-//        articleService.addArticle(article);
-//    }
+
+    @GetMapping("/{id}/modifier")
+    public String getModifierArticle(Model model, @PathVariable Long id) throws IllegalAccessException {
+        model.addAttribute("article", articleService.getArticleById(id));
+        return "form";
+    }
+
+    @GetMapping("{id}/supprimer")
+    public String deleteArticle(
+            @PathVariable Long id
+    ) {
+        articleService.deleteArticle(id);
+        return "redirect:/";
+    }
 
     @GetMapping("/{id}")
     public Article getArticleById(
@@ -57,24 +67,19 @@ public class ArticleController {
         }
     }
 
-    @GetMapping("/{id}/modifier")
-    public String getModifierArticle(Model model) {
-        model.addAttribute("modifierArticle", articleService.getArticleById(id));
-        return "form";
+    @PostMapping("add-article")
+    public String addArticle(@ModelAttribute Article a, Model model) {
+        articleService.addArticle(a);
+        return "redirect:/";
     }
-
+//            @RequestBody Article article
+//    ) {
+//        articleService.addArticle(article);
+//    }
 
     @PostMapping("/{id}/modifier")
     public String modifierArticle(@ModelAttribute Article a, Model model) {
         articleService.modifierArticle(a);
-        return "redirect:/";
-    }
-
-    @GetMapping("{id}/supprimer")
-    public String deleteArticle(
-            @PathVariable Long id
-    ) {
-        articleService.deleteArticle(id);
         return "redirect:/";
     }
 }
