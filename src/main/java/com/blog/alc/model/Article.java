@@ -1,5 +1,6 @@
-package com.blog.model;
+package com.blog.alc.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -9,11 +10,20 @@ import jakarta.persistence.Id;
 public class Article {
     @Id
     @GeneratedValue
-
     private Long id;
+
     private String title;
+
     private String author;
+
+    @Column(length = 1000)
     private String contenu;
+
+    public Article(String title, String author, String contenu) {
+        this.title = title;
+        this.author = author;
+        this.contenu = contenu;
+    }
 
     public Article(Long id, String title, String author, String contenu) {
         this.id = id;

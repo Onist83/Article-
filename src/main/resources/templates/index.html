@@ -5,13 +5,17 @@
     <title>Mon Blog</title>
 </head>
 <body>
+<div>
+    <a href="/nouveau"><button>Créer un nouvel article</button></a>
+</div>
+<br>
 <div th:each="article : ${listArticles}">
     <h3>My id is: <span th:text="${article.id}"></span></h3>
     <h5>My title is: <span th:text="${article.title}"></span></h5>
     <h5>My author is: <span th:text="${article.author}"></span></h5>
     <a th:href="@{/detail/{id}(title=${article.title})}">Details du produit</a>
     <a href="/form"><button>Modifier</button></a>
-    <a th:ref="@/supprimer/{id}(id=${article.id})"><button>Delete</button></a>
+    <a th:href="@{/{id}/supprimer(id=${article.id})}"><button>Delete</button></a>
     <br>
 </div>
 </body>

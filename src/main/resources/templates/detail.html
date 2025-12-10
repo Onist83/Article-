@@ -5,6 +5,11 @@
     <title>Title</title>
 </head>
 <body>
+<div>
+    <a href="/index"><button>Retour acceuil</button></a>
+    <a th:href="@{/{id}/supprimer(id=${article.id})}"><button>Delete</button></a>
+    <a th:href="@{/{id}/modifier(id=${article.id])}}"><button>Modifier</button></a>
+</div>
 
 </body>
 </html>
