@@ -20,20 +20,12 @@ public class ArticleController {
         model.addAttribute("listArticles", articleService.getListArticles());
         return "index";
     }
-//    public List<Article> getAllArticles() {
-//        return articleService.getListArticles();
-//    }
 
     @GetMapping("/form") //createANewArticle
     public String getcreateANewArticle(Model model) {
         model.addAttribute("article", new Article());
         return "form";
     }
-//    public void createANewArticle(
-//            @RequestBody Article article
-//    ) {
-//        articleService.createANewArticle(article);&a
-//    }
 
     @GetMapping("/detail/{id}")
     public String getDetailArticle(Model model, @PathVariable Long id) throws IllegalAccessException {
@@ -67,15 +59,21 @@ public class ArticleController {
         }
     }
 
+    @GetMapping("/rechercher")
+    public String getRechercherArticle(Model model, String author) throws IllegalAccessException {
+        model.addAttribute("listArticles", articleService.getArticlesByAuthor(author));
+        return "index";
+    }
+
+    // creer un form pour rechercher l'author apres validation
+    // renvoyer la page d'acceuil avec seulement la recherche
+    // idem plus ou moins que article new avec renvoie form vide
+
     @PostMapping("add-article")
     public String addArticle(@ModelAttribute Article a, Model model) {
         articleService.addArticle(a);
         return "redirect:/";
     }
-//            @RequestBody Article article
-//    ) {
-//        articleService.addArticle(article);
-//    }
 
     @PostMapping("/{id}/modifier")
     public String modifierArticle(@ModelAttribute Article a, Model model) {

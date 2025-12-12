@@ -3,20 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" th:href"@{/css/main.css}">
+    <link rel="stylesheet" th:href="@{/css/detail.css}">
 </head>
 <body>
-<div>
-        <h3>My id is: <span th:text="${article.id}"></span></h3>
-        <h5>My title is: <span th:text="${article.title}"></span></h5>
-        <h5>My author is: <span th:text="${article.author}"></span></h5>
-        <h5>Resum: <span th:text="${article.contenu}"></span></h5>
-    <br>
-    <br>
-    <a href="/"><button>Retour acceuil</button></a>
-    <a th:href="@{/{id}/supprimer(id=${article.id})}"><button>Delete</button></a>
-    <a href="/form"><button>Modifier</button></a>
+<div class="alignement">
+    <h5>My id is: <span th:text="${article.id}"></span></h5>
+    <h5>My title is: <span th:text="${article.title}"></span></h5>
+    <h5>My author is: <span th:text="${article.author}"></span></h5>
 </div>
+
+<div class="resum"><h5>Resum: <span th:text="${article.contenu}"></span></h5>
+</div>
+    <br>
+    <br>
+
+<div class="buttons">
+<a th:href="@{/{id}/modifier(id=${article.id})}">
+    <button class="button">Modifier</button></a>
+
+    <a th:href="@{/{id}/supprimer(id=${article.id})}">
+        <button class="button">Delete</button>
+    </a>
+
+<a href="/">
+    <button class="button">Retour acceuil</button>
+</a>
+</div>
+
 
 </body>
 </html>

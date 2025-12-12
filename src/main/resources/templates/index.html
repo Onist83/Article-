@@ -3,21 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <title>Mon Blog</title>
-    <link rel="stylesheet" th:href"@{/css/main.css}">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
 </head>
 <body>
+<header>
 <div>
-    <a href="/form"><button>Créer un nouvel article</button></a>
+    <label>Recherche par auteur: </label>
+    <form method="get" th:action="@{/rechercher}">
+    <input type="text" name="author">
+    <button class="button" type="submit">Rechercher</button>
+    <a href="/"><button class="button" type="button">Réinitialiser</button>
+
+    </a>
+    <br>
+    <br>
+    </form>
 </div>
-<br>
-<div th:each="article : ${listArticles}">
-    <h3>My id is: <span th:text="${article.id}"></span></h3>
-    <h5>My title is: <span th:text="${article.title}"></span></h5>
-    <h5>My author is: <span th:text="${article.author}"></span></h5>
-    <a th:href="@{/detail/{id}(id=${article.id})}">Details du produit</a>
-    <a th:href="@{/{id}/modifier(id=${article.id})}"><button>Modifier</button></a>
-    <a th:href="@{/{id}/supprimer(id=${article.id})}"><button>Delete</button></a>
+
+<div>
+    <a href="/form">
+        <button class="button">Créer un nouvel article</button>
+    </a>
+    <br>
     <br>
 </div>
+</header>
+
+<main>
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Détails du produit</th>
+                <th>Modifier</th>
+                <th>Delete</th>
+            </tr>
+
+     <tr th:each="article : ${listArticles}">
+    <td><span th:text="${article.id}"></span></td>
+    <td><span th:text="${article.title}"></span></td>
+    <td><span th:text="${article.author}"></span></td>
+    <td><a th:href="@{/detail/{id}(id=${article.id})}">Details du produit</a></td>
+    <td><a th:href="@{/{id}/modifier(id=${article.id})}"><button class="button">Modifier</button></a></td>
+    <td><a th:href="@{/{id}/supprimer(id=${article.id})}"><button class="button">Delete</button></a></td>
+     </tr>
+        </table>
+
+</main>
 </body>
 </html>
