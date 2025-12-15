@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -13,25 +13,25 @@
       method="post">
 
     <div class="detail"><label>Title: </label>
-    <input type="text" th:field="*{title}"/>
+    <input type="text" size="20" style="height:25px" th:field="*{title}"/>
     <br>
     <label>Author: </label>
-    <input type="text" th:field="*{author}"/>
+    <input type="text" size="20" style="height:25px" th:field="*{author}"/>
     <br>
     </div>
 
-    <div><label>Contenu: </label>
-    <input type="text" th:field="*{contenu}"/>
+    <div class="contenu"><label>Contenu: </label>
+    <textarea class="textarea" th:field="*{contenu}"></textarea>
     <br>
     </div>
 
-    <div>
+    <div class="buttons">
     <a th:href="@{/{id}/valider(id=${article.id})}">
-        <button>Valider</button>
+        <button class="button">Valider</button>
     </a>
 
 <a href="/">
-    <button>Retour Acceuil</button>
+    <button class="button">Retour Acceuil</button>
 </a>
 </div>
 </form>

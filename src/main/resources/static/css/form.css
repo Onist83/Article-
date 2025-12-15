@@ -17,3 +17,29 @@ body {
     font-size: 20px;
     margin-top: 5%;
 }
+
+.button {
+    padding: 10px 20px;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 15%;
+}
+
+.contenu {
+    font-size: 20px;
+    margin-top: 5%;
+}
+
+.textarea {
+     width: 500px;
+     min-width: 500px;
+     max-width: 700px;
+}
